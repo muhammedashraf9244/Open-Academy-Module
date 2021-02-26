@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+<!--                            <field name="category_id" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags..."/>-->
+        <record id="contact_form_view" model="ir.ui.view">
+            <field name="name">partner.instructor</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+<!--                <notebook position="inside">-->
+<!--                    <page string="Sessions">-->
+<!--                        <group>-->
+<!--                            <field name="instructor"/>-->
+<!--                            <field name="session_ids" widget="many2many_tags"/>-->
+<!--                        </group>-->
+<!--                    </page>-->
+<!--                </notebook>-->
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page string="Sessions">
+                        <group>
+                            <field name="instructor"/>
+                            <field name="session_ids">
+                                  <tree>
+                                    <field name="name"/>
+                                    <field name="start_date"/>
+                                    <field name="duration"/>
+                                    <field name="seats"/>
+                                    <field name="course_id"/>
+                                  </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Demo data for category -->
+         <record model="res.partner.category" id="teacher1">
+            <field name="name">Teacher / Level 1</field>
+        </record>
+        <record model="res.partner.category" id="teacher2">
+            <field name="name">Teacher / Level 2</field>
+        </record>
+        <record id="contact_action" model="ir.actions.act_window">
+            <field name="name">Contacts</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="configuration_menu" name="Configuration"
+                  parent="main_openacademy_menu"/>
+        <menuitem id="contact_menu" name="Contacts"
+                  parent="configuration_menu" action="contact_action"/>
+    </data>
+</odoo>

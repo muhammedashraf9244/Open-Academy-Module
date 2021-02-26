@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="course_python" model="openacademy.course">
+            <field name="name">Course Python</field>
+            <field name="description">Course python learn how build and develop app using python</field>
+        </record>
+        <record id="course_html" model="openacademy.course">
+            <field name="name">Course HTML</field>
+            <field name="description">Course HTML learn how build structure for your web apps</field>
+        </record>
+        <record id="course_css" model="openacademy.course">
+            <field name="name">Course CSS</field>
+            <field name="description">Course CSS learn how design your web apps</field>
+        </record>
+         <record id="course_javascript" model="openacademy.course">
+            <field name="name">Course JavaScript</field>
+            <field name="description">Course javascript learn how add actions and events in your web apps</field>
+        </record>
+    </data>
+</odoo>
