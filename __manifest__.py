@@ -27,18 +27,18 @@
     'description': """
         Open Academy moduled for learning and developing first module in odoo
     """,
-    'author': "Eng.MuhammedAshraf",
-    'website': "http://www.yourcompany.com",
+    'author': "Eng.MuhammedAshraf@OdooDeveloper",
+    'website': "https://github.com/muhammedashraf9244/Open-Academy-Module",
     'license': 'AGPL-3',
     'category': 'Test',
-    'version': '13.0',
+    'version': '13.1.0',
     'depends': ['base'],
     'data': [
-        # 'security/ir.model.access.csv',
         'views/course_view.xml',
         'views/session_view.xml',
         'views/partner_view.xml',
-        # 'views/templates.xml',
+        'security/openacdemy_groups.xml',
+        'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
     'demo': [

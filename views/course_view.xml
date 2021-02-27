@@ -1,8 +1,6 @@
 <odoo>
   <data>
 
-
-
     <!-- Form view for courses in open academy    -->
     <record id="courses_form_view" model="ir.ui.view">
         <field name="name">course.form.view</field>

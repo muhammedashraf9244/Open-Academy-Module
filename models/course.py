@@ -30,6 +30,10 @@ class Course(models.Model):
         for record in self:
             _logger.warn(f'delete course name {record.name}')
 
+    @api.model
+    def create(self, vals_list):
+        _logger.warn(f' responsible id is {self.responsible_id.id}')
+        return super().create(vals_list)
 
 class Session(models.Model):
     _name = 'openacademy.session'
