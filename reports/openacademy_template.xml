@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <template id="report_session_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2 t-field="o.name"/>
+                            <p>Form <span t-field="o.start_date"/> to <span t-field="o.end_date"/></p>
+                            <h3>Attendees</h3>
+                            <ul>
+                                <t t-foreach="o.attendee_ids" t-as="attend">
+                                    <li><span t-field="attend.name" /></li>
+                                </t>
+                            </ul>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
