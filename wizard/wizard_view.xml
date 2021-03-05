@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="wizard_form_view">
+        <field name="name">wizard.form</field>
+        <field name="model">openacademy.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Attendees">
+                <group>
+                    <field name="session_ids" widget="many2many_tags"/>
+                    <field name="attendee_ids" widget="many2many_tags"/>
+                </group>
+
+                <footer>
+                    <button name="subscribe" type="object"
+                            string="Subscribe" class="oe_highlight"/>
+                    or
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+        </record>
+
+        <!--  add if not define button to call action of wizard
+           binding_model="openacademy.session"
+        -->
+
+        <act_window id="session_action_wizard"
+                    name="Add Attendees"
+                    binding_model="openacademy.session"
+                    res_model="openacademy.wizard"
+                    view_mode="form"
+                    target="new"/>
+
+    </data>
+</odoo>

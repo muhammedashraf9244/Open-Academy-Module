@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
-from odoo.exceptions import UserError, ValidationError , _logger
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError, _logger
 from datetime import timedelta
+
+
 class Course(models.Model):
     _name = 'openacademy.course'
     _description = 'Openacademy Courses'
@@ -54,6 +56,7 @@ class Session(models.Model):
 
     attendees_count = fields.Integer(string='Attendees count',compute='_get_attendees_count',store=True)
     color = fields.Integer()  # for kanban view
+
     @api.depends('attendee_ids')
     def _get_attendees_count(self):
         for record in self:
@@ -96,12 +99,12 @@ class Session(models.Model):
         if self.seats < len(self.attendee_ids):
             return {
                 'warning':{
-                    'title': 'Too many attendees' ,
-                    'message': ' Increase seats or remove excess attendees'
+                    'title': _('Too many attendees'),
+                    'message': _('Increase seats or remove excess attendees')
                     }
             }
 
-    @api.constrains('instructor_id','attendee_ids')
+    @api.constrains('instructor_id', 'attendee_ids')
     def _check_intstructor_not_in_attendee_ids(self):
         for r in self:
             if r.instructor_id and r.instructor_id in r.attendee_ids:
