@@ -1,1 +1,4 @@
 /__pycache__/*
+/models/__pycache__/*
+/wizard/__pycache__/*
+/controllers/__pycache__/*
