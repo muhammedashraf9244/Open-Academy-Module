@@ -32,11 +32,12 @@
     'license': 'AGPL-3',
     'category': 'Test',
     'version': '13.1.0',
-    'depends': ['base'],
+    'depends': ['base', 'board'],
     'data': [
         'views/course_view.xml',
         'views/session_view.xml',
         'views/partner_view.xml',
+        'views/session_board.xml',
         'reports/openacademy_template.xml',
         'reports/openacademy_report.xml',
         'wizard/wizard_view.xml',
