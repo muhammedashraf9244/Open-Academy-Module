@@ -7,6 +7,17 @@
         <field name="model">openacademy.course</field>
         <field name="arch" type="xml">
           <form>
+            <header>
+                <button name="action_submit" type="object" string="Submit" states="draft" />
+                <button name="action_department_manager_approve" type="object"
+                        string="Department Manager Approve" states="submit" class="oe_highlight" />
+                <button name="action_college_manager_approve" type="object"
+                        string="College Manager Approve" states="department_manager_approve" class="oe_highlight" />
+                <button name="action_cancel" type="object" string="Cancel" states="submit,department_manager_approve,college_manager_approve" />
+                <button name="action_return" type="object" string="Return Draft" states="cancel"/>
+                <field name="state" widget="statusbar"
+                       statusbar_visible="draft,submit,department_manager_approve,college_manager_approve"/>
+            </header>
             <sheet>
               <group>
                 <field name="name"/>

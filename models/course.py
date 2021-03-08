@@ -13,6 +13,28 @@ class Course(models.Model):
     responsible_id = fields.Many2one('res.users',ondelete='set null',string='Responsible',index=True, default=lambda self: self.env.uid)
     session_ids = fields.One2many('openacademy.session','course_id',string='Sessions')
 
+    state = fields.Selection([('draft', 'Draft'), ('submit', 'Submit'),
+                              ('department_manager_approve', 'Department Manager Approve'),
+                              ('college_manager_approve', 'College Manager Approve'),
+                              ('cancel', 'Cancel')],
+                             string='Courses State', default='draft',copy=False, readonly=False)
+
+    def action_submit(self):
+        self.write({'state':'submit'})
+
+    def action_department_manager_approve(self):
+        self.write({'state': 'department_manager_approve'})
+
+    def action_college_manager_approve(self):
+        self.write({'state': 'college_manager_approve'})
+
+    def action_cancel(self):
+        self.write({'state':'cancel'})
+
+    def action_return(self):
+        self.write({'state':'draft'})
+
+
     _sql_constraints = [(
         'name_isnotlike_description' , 'check(name != description)' , 'The title of course not should be the description') ,
         ('Unique name' , 'unique(name)' ,'The title of course must be unique' )
@@ -56,6 +78,7 @@ class Session(models.Model):
 
     attendees_count = fields.Integer(string='Attendees count',compute='_get_attendees_count',store=True)
     color = fields.Integer()  # for kanban view
+
 
     @api.depends('attendee_ids')
     def _get_attendees_count(self):
